@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;   
+}
+
+.formulario{
+    border: 1px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#format-crear {
+    justify-content: center;
+    border: 1px;
+    padding: 20%;
+}
