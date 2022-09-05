@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./media/logo.png" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/crear.css" />
+    <title>Crear</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <a href="./index.html">
+            <img src="./media/logo.png" alt="imagen" />
+          </a>
+        </div>
+        <nav>
+          <ul class="nav-lista">
+            <li class="lista-link">
+              <a href="./index.html">PERFIL</a>
+            </li>
+            <li class="lista-link">
+              <a href="./crear.html">CREAR</a>
+            </li>
+            <li class="lista-link">
+              <a href="./consultar.html">CONSULTAR</a>
+            </li>
+            <li class="lista-link">
+              <a href="./actualizar.html">ACTUALIZAR</a>
+            </li>
+            <li class="lista-link">
+              <a href="./eliminar.html">ELIMINAR</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="boton">
+          <a href="./login.html">SALIR</a>
+        </button>
+      </header>
+    <form id="format-crear">
+    <h2>programar nueva clase</h2>
+    <div class="formulario">
+        <div>
+        <label for="input_asignatura">nombre de la asignatura:</label>
+        <input type="text"/>
+            <div><br><br>
+                <label for="imput_nom_cole_uni">nombre del colegio o universidad:</label>
+                <input type="text"/>
+                <div><br><br>
+                <div>
+                <label for="input_salon">salon de clases:</label>
+                <input type="text"/>
+                </div><br><br>
+                    <div>
+                        <label for="dias_de_la_seman"> Día:</label>
+                        <select name="dias_de_la_seman" id="dias_de_la_seman">
+                            <option value="lunes">lunes</option>
+                            <option value="martes">martes</option>
+                            <option value="miercoles">miercoles</option>
+                            <option value="jueves">jueves</option>
+                            <option value="viernes">viernes</option>
+                        </select>
+                    </div>
+    </div>
+    </form>
+</body>
+</html>
