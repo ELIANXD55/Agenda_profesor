@@ -45,16 +45,23 @@ input[type="password"] {
     color: #999;
 }
 
-.button {
+.boton {
     border: none;
-    width: 50%;
-    color: #023047;
-    font-size: 20px;
-    background: #ffb703;
-    padding: 15px 20px;
-    border-radius: 5px;
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 20px;
     cursor: pointer;
-    margin: 10px 0px;
+}
+
+.boton a{
+    background-color: #ffb703;
+    width: 50%;
+    padding: 15px 50px;
+    border-radius: 10px;
+    transition: all .3s ease;
+    font-size: 20px;
+    text-decoration: none;
+    color: #023047;
 }
 
 .centrar-boton {
@@ -62,7 +69,7 @@ input[type="password"] {
     justify-content: center;
 }
 
-.button:hover {
+.boton a:hover {
     background: #219ebc;
 }
 
@@ -85,5 +92,6 @@ p {
         width: 500px;
         margin-top: 90px;
         border-radius: 2%;
+        box-shadow: 0 0 10px 0 #023047;
     }
 }

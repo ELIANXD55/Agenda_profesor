@@ -8,13 +8,22 @@
       src="https://kit.fontawesome.com/91c67f66b8.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./styles/login.css" />
-    <title>Iniciar sesión</title>
+    <link rel="icon" type="image/png" href="./media/logo.png" />
+    <link rel="stylesheet" href="./styles/registro.css" />
+    <title>Registro</title>
   </head>
   <body>
     <form class="formulario">
-      <h2>Inicia sesión</h2>
+      <h2>Registro</h2>
       <div class="contenedor">
+        <div class="input-contenedor">
+          <i class="fa-solid fa-user icono"></i>
+          <input type="text" placeholder="Nombre completo" />
+        </div>
+        <div class="input-contenedor">
+          <i class="fa-solid fa-phone icono"></i>
+          <input type="tel" placeholder="Número telefónico" />
+        </div>
         <div class="input-contenedor">
           <i class="fa-solid fa-envelope icono"></i>
           <input type="email" placeholder="Correo electrónico" />
@@ -23,12 +32,16 @@
           <i class="fa-solid fa-key icono"></i>
           <input type="password" placeholder="Contraseña" />
         </div>
+        <!--
         <div class="centrar-boton">
-          <input type="submit" value="Iniciar sesión" class="button" />
+          <input type="submit" value="Registrate" class="button" />
         </div>
-        <p>
-          ¿No tienes cuenta?<a class="link" href="registro.html"> Registrate</a>
-        </p>
+        -->
+        <div class="centrar-boton">
+          <button class="boton">
+            <a href="./index.html">Registrate</a>
+          </button>
+        </div>
       </div>
     </form>
   </body>
