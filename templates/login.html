@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+  {% with mensajes = get_flashed_messages() %}
+  {% if mensajes  %}
+    {% for mensaje in  mensajes %}
+      <p>{{ mensaje }}</p>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+<head>
     <meta charset="UTF-16" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,28 +17,28 @@
       crossorigin="anonymous"
     ></script>
     <link rel="icon" type="image/png" href="./media/logo.png" />
-    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
     <title>Iniciar sesión</title>
   </head>
   <body>
-    <form class="formulario">
+    <form class="formulario" action="/login" method="GET">
       <h2>Inicia sesión</h2>
       <div class="contenedor">
         <div class="input-contenedor">
           <i class="fa-solid fa-envelope icono"></i>
-          <input type="email" placeholder="Correo electrónico" />
+          <input type="email" name="correo" placeholder="Correo electrónico">
         </div>
         <div class="input-contenedor">
           <i class="fa-solid fa-key icono"></i>
-          <input type="password" placeholder="Contraseña" />
+          <input type="password" name="contrasena" placeholder="Contraseña" >
         </div>
         <div class="centrar-boton">
           <button class="boton">
-            <a href="./index.html">Iniciar sesión</a>
+            Iniciar sesión
           </button>
         </div>
         <p>
-          ¿No tienes cuenta?<a class="link" href="registro.html"> Registrate</a>
+          ¿No tienes cuenta?<a class="link"  href="{{ url_for('registro') }}"> Registrate</a>
         </p>
       </div>
     </form>
