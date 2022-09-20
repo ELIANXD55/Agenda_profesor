@@ -17,32 +17,39 @@ app.secret_key = 'contraseñasecreta'
 def casa():
     return render_template('login.html')
 
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
 @app.route('/login', methods= ["POST",'GET'])
 def login():
-    notificacion = Notify()
+    a = 0
+    b = 0
     if request.method == 'POST':
+        a= 0
         correo = request.form['correo']
         contrasena = request.form['contrasena']
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM profesores WHERE correo=%s ",(correo,))
-        user = cur.fetchone()
-        cur.close()
-        print(user)
-        if len(user)>0:
-            if contrasena == user[4]:
-                return render_template("index.html")
-            else:
-                notificacion.title = "Error de Acceso"
-                notificacion.message="Correo o contraseña no valida"
-                notificacion.send()
-                return render_template("login.html")
+        cur.execute("SELECT id , nombre , telefono , correo , contrasena FROM profesores WHERE correo = '{0}'".format(correo))
+        datos = cur.fetchall()
+        informacion = []
+        lista = []
+        for fila in datos:
+            informacio ={'ID':fila[0], 'NOMBRE':fila[1], 'TELEFONO':fila[2], 'CORREO':fila[3], 'CONTRASENA':fila[4]}
+            informacion.append(informacio)
+        for x in informacion:
+            print(x)
+            for y in x.values():
+                print(y)
+                if y == contrasena:
+                    a = 1
+                    
+        if a == 1:
+            return redirect(url_for('home'))
         else:
-            notificacion.title = "Error de Acceso"
-            notificacion.message="No existe el usuario"
-            notificacion.send()
-            return render_template("login.html")
+            flash('CORREO O CONTRASEÑA INCORRECTA')
+            return redirect(url_for('login'))
     else:
-        
         return render_template("login.html")
 
 
@@ -77,14 +84,18 @@ def informacion():
         informacion.append(informacio)
     return jsonify({'INFORMACION':informacion, 'MENSAJE':'ACA SE ACABA LA LISTA'})
 
-@app.route('/informacion/<id>', methods= ['GET'])
-def leer(id):
+@app.route('/informacion/<nombre>', methods= ['GET'])
+def leer(nombre):
     cur = mysql.connection.cursor()
-    cur.execute("SELECT id , nombre , telefono , correo , contrasena FROM profesores WHERE id = '{0}'".format(id))
+    cur.execute("SELECT id , nombre , telefono , correo , contrasena FROM profesores WHERE nombre = '{0}'".format(nombre))
     datos = cur.fetchone()
     if datos != None:
         informacion ={'ID':datos[0], 'NOMBRE':datos[1], 'TELEFONO':datos[2], 'CORREO':datos[3], 'CONTRASENA':datos[4]}
-        return jsonify({'INFORMACION':informacion, 'MENSAJE':'GOOOOOOOOOOOOOOOOD'})
+        a = jsonify({'INFORMACION':informacion, 'MENSAJE':'GOOOOOOOOOOOOOOOOD'})
+        return a
+
+
+
 
 
 if __name__ == '__main__':
