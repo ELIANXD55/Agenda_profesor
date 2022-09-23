@@ -1,3 +1,5 @@
+from distutils.log import info
+import telnetlib
 from flask import Flask, request, render_template, redirect, url_for , flash, jsonify
 from flask_mysqldb import MySQL,MySQLdb
 from os import path #pip install notify-py
@@ -19,31 +21,59 @@ app.secret_key = 'contraseñasecreta'
 def casa():
     return render_template('login.html')
 
-@app.route('/home')
-def home():
-    return render_template('index.html')
+@app.route('/home<id><nombre><telefono><correo><contrasena>')
+def home(id,nombre, telefono , correo , contrasena):
+    #return "welcome {0}{1}{2}{3}{4} ".format(id,nombre,telefono,correo,contrasena)
+    datos = "welcome {0}{1}".format(id,nombre)
+    return render_template("index.html", informacion = datos)
 
 @app.route('/login', methods= ["POST",'GET'])
 def login():
+    bandera = 0
+    datos = 0
+    comprobar = 0
     if request.method == 'POST': 
         lista = []
+        json = {}
         correo = request.form['correo']
         contrasena = request.form['contrasena']
         response = requests.get('http://127.0.0.1:300/informacion')
         data = response.json()
         result = data['INFORMACION']
         for i in result:
+            id = i['id']
+            nombre = i['nombre']
+            telefono = i['telefono']
             core = i['correo']
             contra = i['contrasena']
-            print(core)
-            print(contra)
             if core == correo and contra == contrasena:
+                lista.append(id)
+                lista.append(nombre)
+                lista.append(telefono)
+                lista.append(core)
+                lista.append(contra)
+                json['id'] = id
+                json['nombre'] = nombre
+                json['telefono'] = telefono
+                json['correo'] = core
+                json['contrasena'] = contra
+                print("------------------------------------------------------------------------")
+
+                print(id)
+                print(nombre)
+                print(telefono)
+                print(core)
+                print(contra)
                 print("ENCONTRADOOOOOOOOOOO")
-                return redirect(url_for('home'))
-        else:
+                print("------------------------------------------------------------------------")
+                comprobar = 1
+                datos =jsonify({'INFORMACION':json, 'MENSAJE':'ACA SE ACABA LA LISTA'})
+                return redirect(url_for('home',id = id, nombre = nombre, telefono = telefono  , correo = core , contrasena = contra))
+        if comprobar == 0:
+            flash('CORREO O CONTRASEÑA INVALIDOS')
             return render_template('login.html')
     else:
-        return "P.P"
+        return redirect(url_for('home',id = id, nombre = nombre, telefono = telefono  , correo = core , contrasena = contra))
 
 
 @app.route('/registro')
