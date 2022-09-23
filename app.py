@@ -96,7 +96,7 @@ def register():
         response = requests.post('http://127.0.0.1:300/informacion',json=json)
         print(dir(response))
         flash('USURUARIO REGISTRADO CORREOTAMENTE')
-    return redirect(url_for('login'))
+    return render_template('login.html')
 
 #-------------------------------API-----------------------------------------------------------------------------
 #------------------------------CONVIERTE LA INFO DE LA BD A API------------------------------------------------
