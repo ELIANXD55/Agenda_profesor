@@ -1,13 +1,9 @@
-from distutils.log import info
-import telnetlib
 from flask import Flask, request, render_template, redirect, url_for , flash, jsonify
 from flask_mysqldb import MySQL,MySQLdb
-from os import path #pip install notify-py
-from notifypy import Notify
 import requests
 
 
-
+#-------------------------------CONECION DEL MYSQL----------------------------------------------------------------
 app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -16,17 +12,19 @@ app.config['MYSQL_DB'] = 'agendaprofesor'
 mysql = MySQL(app )
 
 app.secret_key = 'contraseñasecreta'
-
+#-----------------------------------------------------------------------------------------------
+#-------------------------------------ACA EN LA RUTA RAIZ VA HA MOSTRAR EL LOGIN CON EL RENDER----------------------------------------------------------
 @app.route('/')
 def casa():
     return render_template('login.html')
-
+#---------------------------------------ACA VA O VAIR EL CRUD CON LA INFORMACION DEL USUARIO-------------------------------------------------------
 @app.route('/home<id><nombre><telefono><correo><contrasena>')
 def home(id,nombre, telefono , correo , contrasena):
     #return "welcome {0}{1}{2}{3}{4} ".format(id,nombre,telefono,correo,contrasena)
     datos = "welcome {0}{1}".format(id,nombre)
     return render_template("index.html", informacion = datos)
-
+#-----------------------------------------------------------------------------------------------
+#----------------------------------------ACA VA EL LOGIN CON SUS METODOS Y LOS PRINTS SON DEBUGS-------------------------------------------------------
 @app.route('/login', methods= ["POST",'GET'])
 def login():
     bandera = 0
@@ -58,7 +56,6 @@ def login():
                 json['correo'] = core
                 json['contrasena'] = contra
                 print("------------------------------------------------------------------------")
-
                 print(id)
                 print(nombre)
                 print(telefono)
@@ -75,11 +72,13 @@ def login():
     else:
         return redirect(url_for('home',id = id, nombre = nombre, telefono = telefono  , correo = core , contrasena = contra))
 
-
+#-----------------------------------------------------------------------------------------------
+#---------------------------------------ACA EN LA RAIZ REGISTRO VA RENDERIZAR EL REGISTRO.HTML---------------------------------------------------
 @app.route('/registro')
 def registro():
     return render_template('registro.html')
-
+#-----------------------------------------------------------------------------------------------
+#------------------------------------------ACA VA TODA LA LOGICA DEL REGISTRO CON SU METODO Y CONEXION DEL LA API----------------------------------------------------
 @app.route('/register', methods =['POST'])
 def register():
     if request.method == 'POST':
