@@ -1,0 +1,55 @@
+[33mcommit 596d5cc28a36e388dc5986e49b85efb6919ff5d6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 86d892f c22d4a6
+Author: 0Jairo <je.pulido123@gmail.com>
+Date:   Mon Sep 5 21:55:31 2022 -0500
+
+    Merge branch 'dev'
+
+[33mcommit c22d4a6c9ddaa679994464a818489f8cb61d48ab[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Merge: 3034b81 d6aaa0e
+Author: 0Jairo <je.pulido123@gmail.com>
+Date:   Mon Sep 5 16:27:55 2022 -0500
+
+    agregar logo y unir crear con navbar
+
+[33mcommit 3034b8106654f948b1adee6e5fc8cc02a2b8f98f[m
+Author: 0Jairo <je.pulido123@gmail.com>
+Date:   Mon Sep 5 16:03:22 2022 -0500
+
+    agregar navbar y logo
+
+[33mcommit d6aaa0ec940a303548f38f455d51edb21af591d7[m
+Author: jason93s <jason1993cortes@hotmail.com>
+Date:   Mon Sep 5 16:00:32 2022 -0500
+
+    tml/crear.html:hoja crear:agrgar y poner estilos
+
+[33mcommit 86d892f45e4982bb76508e3a30a155d508b0e03f[m
+Author: jason93s <jason1993cortes@hotmail.com>
+Date:   Sun Sep 4 23:53:15 2022 -0500
+
+    README.md
+
+[33mcommit bac6e2e0e8de28a75d8ec0a0946784d5c0329806[m
+Author: ELIAN <jevillaurrutia@gmail.com>
+Date:   Sun Sep 4 23:00:04 2022 -0500
+
+    intento
+
+[33mcommit 701999ee5bb0198166691c5c86cd7256b85b0f79[m
+Author: ELIAN <jevillaurrutia@gmail.com>
+Date:   Sun Sep 4 22:51:24 2022 -0500
+
+    prueba
+
+[33mcommit 38c3e7e9670f7f06090568dc3ad3143aa41507bf[m
+Author: 0Jairo <je.pulido123@gmail.com>
+Date:   Sun Sep 4 22:22:32 2022 -0500
+
+    html: login y registro, styles: login.css y registro.css
+
+[33mcommit 996acc9f171c5d5c12cba0bb60a0a2475efa6967[m
+Author: ELIAN <jevillaurrutia@gmail.com>
+Date:   Thu Aug 25 16:36:11 2022 -0500
+
+    first commit
