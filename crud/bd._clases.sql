@@ -1,0 +1,13 @@
+CREATE DATABASE agendap;
+
+USE agendap;
+
+CREATE TABLE clases (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    materia VARCHAR(100) NOT NULL,
+    dias VARCHAR(100) NOT NULL,
+    hora_inicio VARCHAR(50) NOT NULL,
+    hora_fin VARCHAR(50) NOT NULL,
+    instituto VARCHAR(100) NOT NULL,
+    salon VARCHAR(50) NOT NULL
+);

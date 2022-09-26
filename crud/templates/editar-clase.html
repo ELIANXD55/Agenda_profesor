@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      {% with mensajes = get_flashed_messages() %} {% if mensajes %} {% for
+      mensaje in mensajes %}
+      <p>{{mensaje}}</p>
+      {% endfor %} {% endif %} {% endwith %}
+      <form action="/actualizar/{{registros.0}}" method="POST">
+        <input
+          type="text"
+          name="materia"
+          placeholder="Nombre asignatura"
+          value="{{registros.1}}"
+        />
+        <input
+          type="text"
+          name="dias"
+          placeholder="Día"
+          value="{{registros.2}}"
+        />
+        <input
+          type="text"
+          name="hora_inicio"
+          placeholder="Hora de inicio"
+          value="{{registros.3}}"
+        />
+        <input
+          type="text"
+          name="hora_fin"
+          placeholder="Hora de finalización"
+          value="{{registros.4}}"
+        />
+        <input
+          type="text"
+          name="instituto"
+          placeholder="Instituto"
+          value="{{registros.5}}"
+        />
+        <input
+          type="text"
+          name="salon"
+          placeholder="Salón"
+          value="{{registros.6}}"
+        />
+        <button type="submit">Actualizar</button>
+      </form>
+    </main>
+  </body>
+</html>

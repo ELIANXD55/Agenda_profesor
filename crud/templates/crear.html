@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% with mensajes = get_flashed_messages() %} {% if mensajes %} {% for
+    mensaje in mensajes %}
+    <p>{{mensaje}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <form action="/crear" method="POST">
+      <input type="text" name="materia" placeholder="Nombre asignatura" />
+      <input type="text" name="dias" placeholder="Día" />
+      <input type="text" name="hora_inicio" placeholder="Hora de inicio" />
+      <input type="text" name="hora_fin" placeholder="Hora de finalización" />
+      <input type="text" name="instituto" placeholder="Instituto" />
+      <input type="text" name="salon" placeholder="Salón" />
+      <button type="submit">Crear nueva clase</button>
+    </form>
+  </body>
+</html>

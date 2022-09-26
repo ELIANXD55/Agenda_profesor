@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leer</title>
+  </head>
+  <body>
+    <main>
+      {% with mensajes = get_flashed_messages() %} {% if mensajes %} {% for
+      mensaje in mensajes %}
+      <p>{{mensaje}}</p>
+      {% endfor %} {% endif %} {% endwith %}
+      <table>
+        <thead>
+          <tr>
+            <td>Materia</td>
+            <td>Día</td>
+            <td>Inicio</td>
+            <td>Final</td>
+            <td>Instituto</td>
+            <td>Salón</td>
+            <td>Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dato in informacion %}
+          <tr>
+            <td>{{ dato.1 }}</td>
+            <td>{{ dato.2 }}</td>
+            <td>{{ dato.3 }}</td>
+            <td>{{ dato.4 }}</td>
+            <td>{{ dato.5 }}</td>
+            <td>{{ dato.6 }}</td>
+            <td>
+              <a href="/editar/{{dato.0}}">Editar</a>
+              <a href="/eliminar/{{dato.0}}">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
