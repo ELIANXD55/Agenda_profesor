@@ -17,7 +17,7 @@ app.secret_key = 'contraseñasecreta'
 #-------------------------------------ACA EN LA RUTA RAIZ VA HA MOSTRAR EL LOGIN CON EL RENDER----------------------------------------------------------
 @app.route('/')
 def casa():
-    return render_template('index.html')
+    return render_template('login.html')
 #---------------------------------------ACA VA O VAIR EL CRUD CON LA INFORMACION DEL USUARIO-------------------------------------------------------
 @app.route('/home/<id>',methods= ["POST",'GET'])
 def home(id):
@@ -64,14 +64,20 @@ def login():
                 telefono = i['telefono']
                 core = i['correo']
                 contra = i['contrasena']
-            if core == correo and contra:
+            if core == correo and contra == contrasena:
                 comprobar = 1
-                return redirect(url_for(f'crear',id = id)) and render_template('index.html', ids = id)
+                return redirect(url_for(f'crear',id = id)) and render_template('index.html', ids = id) and redirect(url_for(f'unir',id = id))  
         if comprobar == 0:
             flash('CORREO O CONTRASEÑA INVALIDOS')
             return render_template('login.html') 
     else:
         return redirect(url_for(f'crear',id = id))  and render_template('index.html', ids = id)
+
+
+@app.route('/unir/<id>')
+def unir(id):
+    ids  = id
+    return redirect(url_for('home', id = ids))
 
 #-----------------------------------------------------------------------------------------------
 #---------------------------------------ACA EN LA RAIZ REGISTRO VA RENDERIZAR EL REGISTRO.HTML---------------------------------------------------
@@ -129,13 +135,14 @@ def crear(id):
         flash('SE HA AGREGADO CON EXITO LA CLASE  ')
         return redirect(url_for('home', id = ids))
 
-
+#------------------------------CRUD--------------------------------------------------------------
 @app.route('/actualizar/<id>')
 def actualizar(id):
     cur = mysql.connection.cursor()
     cur.execute(f"SELECT * FROM clases WHERE id_clase= {id}")
     data = cur.fetchall()
     print(data)
+    
     return render_template('editar.html', informacion = data[0])
 
 @app.route('/eliminar/<id>')
@@ -143,6 +150,7 @@ def eliminar(id):
     cur = mysql.connection.cursor()
     cur.execute(' DELETE FROM clases WHERE id_clase = {0}'.format(id))
     mysql.connection.commit()
+    flash('CLASE ELIMINADA CORRECTAMENTE')
     return render_template('index.html')
 
 @app.route('/update/<id>', methods=['POST'])
@@ -165,9 +173,10 @@ def update(id):
                     salon = %s
                 WHERE id_clase = %s
                 """, (materia,dias,inicio,final,instituto,salon,id))
-        flash('SE HA EDITADO CON EXITO EL PRODUCTO  DE LA LISTA ')
+        
         mysql.connection.commit()
-        return render_template('actualizado.html')
+        flash('CLASE ACTUALIZADO CORRECTAMENTE')
+        return render_template("index.html")
 
 #-------------------------------API-----------------------------------------------------------------------------
 #------------------------------CONVIERTE LA INFO DE LA BD A API------------------------------------------------

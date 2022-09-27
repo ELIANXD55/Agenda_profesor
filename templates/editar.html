@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="./media/logo.png" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
+    <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,15 +24,44 @@
             <a class="link" href="{{ url_for('atras') }}">SALIR</a>
           </button>
         </header>
+        
         <form action='/update/{{ informacion.0   }}' method="POST" >
-            <h2>programar nueva clase</h2>
-            <input type="text" name="materia"  placeholder="Materia" value="{{ informacion.1 }}">
-            <input type="text" name="dias"  placeholder="Dias" value="{{ informacion.2 }}">
-            <input type="text" name="inicio"  placeholder="Inicio" value="{{ informacion.3 }}">
-            <input type="text" name="final"  placeholder="Final" value="{{ informacion.4 }}">
-            <input type="text" name="instituto"  placeholder="Instituto" value="{{ informacion.5 }}">
-            <input type="text" name="salon" id="" placeholder="Salon" value="{{ informacion.6 }}">
-            <button type="submit">GUARDAR</button>
-            </form>
+            <h2 class="col-md-6 offset-md-4">programar nueva clase</h2>
+            <div class="row">
+              <div class="col-md-4 offset-md-4">
+                <div class="card card-body">
+                  <form action='/update/{{ informacion.0   }}' method="POST" >
+                    <h2>programar nueva clase</h2>
+                    <div class="form-group">
+                      <label class="col-form-label mt-4" for="inputDefault"></label>
+                      <input type="text" class="form-control" name="materia"  placeholder="Materia" id="inputDefault"  value="{{ informacion.1 }}">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label mt-4" for="inputDefault"></label>
+                      <input type="text" class="form-control" name="dias"  placeholder="Dias" id="inputDefault"  value="{{ informacion.2 }}">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label mt-4" for="inputDefault"></label>
+                      <input type="text" class="form-control" name="inicio"  placeholder="Inicio" id="inputDefault"  value="{{ informacion.3 }}">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label mt-4" for="inputDefault"></label> 
+                      <input type="text" class="form-control" name="final"  placeholder="Final" id="inputDefault"  value="{{ informacion.4 }}">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label mt-4" for="inputDefault"></label>
+                      <input type="text" class="form-control" name="instituto"  placeholder="Instituto" id="inputDefault"  value="{{ informacion.5 }}">
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label mt-4" for="inputDefault"></label>
+                      <input type="text" class="form-control" name="salon" id="" placeholder="Salon" id="inputDefault"  value="{{ informacion.6 }}">
+                    </div>
+                    <button type="submit">GUARDAR</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+
+            
 </body>
 </html>
