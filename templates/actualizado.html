@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+
+    <meta charset="UTF-16" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./media/logo.png" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
+    <title>Perfil de usuario</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a class="link" href="./index.html">
+          <img src="/static/media/logo.png" alt="imagen" />
+        </a>
+      </div>
+      <nav>
+        </ul>
+      </nav>
+      <button class="boton">
+        <a class="link" href="{{ url_for('home/{{ids}}') }}">REGRESAR</a>
+      </button>
+    </header>

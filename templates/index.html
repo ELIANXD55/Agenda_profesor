@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+
     <meta charset="UTF-16" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,33 +12,84 @@
   <body>
     <header>
       <div class="logo">
-        <a href="./index.html">
+        <a class="link" href="./index.html">
           <img src="/static/media/logo.png" alt="imagen" />
         </a>
       </div>
       <nav>
-        <ul class="nav-lista">
-          <li class="lista-link">
-            <a href="./index.html">PERFIL</a>
-          </li>
-          <li class="lista-link">
-            <a href="./crear.html">CREAR</a>
-          </li>
-          <li class="lista-link">
-            <a href="./consultar.html">CONSULTAR</a>
-          </li>
-          <li class="lista-link">
-            <a href="./actualizar.html">ACTUALIZAR</a>
-          </li>
-          <li class="lista-link">
-            <a href="./eliminar.html">ELIMINAR</a>
-          </li>
         </ul>
       </nav>
       <button class="boton">
-        <a href="./login.html">SALIR</a>
+        <a class="link" href="{{ url_for('atras') }}">SALIR</a>
       </button>
     </header>
-    <h1>{{ informacion }}</h1>
+    {% with mensajes = get_flashed_messages() %}
+    {% if mensajes  %}
+      {% for mensaje in  mensajes %}
+        <p>{{ mensaje }}</p>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1>{{ids}}</h1>
+    <form action='/crear/{{ids}}' method="POST" >
+      <h2>programar nueva clase</h2>
+      <input type="text" name="materia"  placeholder="Materia">
+      <input type="text" name="dias"  placeholder="Dias">
+      <input type="text" name="inicio"  placeholder="Inicio">
+      <input type="text" name="final"  placeholder="Final">
+      <input type="text" name="instituto"  placeholder="Instituto">
+      <input type="text" name="salon" id="" placeholder="Salon">
+      <button type="submit">GUARDAR</button>
+      </form>
+
+      
+        <table >
+          <thead> 
+            <td>Nombre</td>
+            <td>Materia</td>
+            <td>Dias</td>
+            <td>Inicio</td>
+            <td>Final</td>
+            <td>Instituto</td>
+            <td>Salon</td>
+            <td>Acciones</td>
+          </thead>
+          <tbody>
+            <td>
+              {% for informacion in informaciones %}
+              <tr>
+                <td>
+                  {{ informacion.1 }}
+                </td>
+                <td>
+                  {{ informacion.2 }}
+                </td>
+                <td>
+                  {{ informacion.3 }}
+                </td>
+                <td>
+                  {{ informacion.4 }}
+                </td>
+                <td>
+                  {{ informacion.5 }}
+                </td>
+                <td>
+                  {{ informacion.6 }}
+                </td>
+                <td>
+                  {{ informacion.7 }}
+                </td>
+                <td>
+                  <a href="/eliminar/{{ informacion.0 }}">ELIMINAR</a>
+                </td>
+                <td>
+                  <a href="/actualizar/{{ informacion.0 }}">ACTUALIZAR</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </td>
+          </tbody>
+        </table>
+
   </body>
 </html>

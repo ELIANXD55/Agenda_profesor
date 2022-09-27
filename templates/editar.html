@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-16" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./media/logo.png" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <header>
+          <div class="logo">
+            <a class="link" href="./index.html">
+              <img src="/static/media/logo.png" alt="imagen" />
+            </a>
+          </div>
+          <nav>
+            </ul>
+          </nav>
+          <button class="boton">
+            <a class="link" href="{{ url_for('atras') }}">SALIR</a>
+          </button>
+        </header>
+        <form action='/update/{{ informacion.0   }}' method="POST" >
+            <h2>programar nueva clase</h2>
+            <input type="text" name="materia"  placeholder="Materia" value="{{ informacion.1 }}">
+            <input type="text" name="dias"  placeholder="Dias" value="{{ informacion.2 }}">
+            <input type="text" name="inicio"  placeholder="Inicio" value="{{ informacion.3 }}">
+            <input type="text" name="final"  placeholder="Final" value="{{ informacion.4 }}">
+            <input type="text" name="instituto"  placeholder="Instituto" value="{{ informacion.5 }}">
+            <input type="text" name="salon" id="" placeholder="Salon" value="{{ informacion.6 }}">
+            <button type="submit">GUARDAR</button>
+            </form>
+</body>
+</html>
